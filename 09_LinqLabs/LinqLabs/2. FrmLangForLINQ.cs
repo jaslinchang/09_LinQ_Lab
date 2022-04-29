@@ -14,7 +14,7 @@ namespace Starter
         public FrmLangForLINQ()
         {
             InitializeComponent();
-
+            this.productsTableAdapter1.Fill(this.nwDataSet1.Products);
         }
         //SWAP
         private void button4_Click(object sender, EventArgs e)
@@ -154,6 +154,239 @@ namespace Starter
             delegateObj = new MyDelegate(Test1);  //委派帶入的只會對應一個參數
             result1 = delegateObj(9);
             MessageBox.Show("result=" + result1);
+
+            //=========================
+            //C# 2.0 匿名方法
+            delegateObj = delegate (int n) { return n > 5; };
+            result = delegateObj(6);
+            MessageBox.Show("result=" + result);
+
+            //=========================
+            //C# 3.0 匿名方法  Lambda 運算式  =>  goes to
+            delegateObj = n => n > 5;
+            result = delegateObj(1);
+            MessageBox.Show("result=" + result);
+
+
+        }
+        List<int> MyWhere(int[] nums, MyDelegate delegateObj)
+        {
+            List<int> list = new List<int>();
+            foreach (int n in nums)
+            {
+                if (delegateObj(n))
+                {
+                    list.Add(n);
+                }                
+            }
+            return list;
+        }
+        private void button10_Click(object sender, EventArgs e)
+        {
+            //委派具名方法
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            List<int> Large_list = MyWhere(nums, Test);
+            foreach(int n in Large_list)
+            {
+                listBox1.Items.Add(n);
+            }
+            //委派匿名方法3.0
+            List<int> oddlist = MyWhere(nums, n =>n % 2 == 1);
+            List<int> evenlist = MyWhere(nums, n => n % 2 == 0);
+            foreach (int n in oddlist)
+            {
+                listBox1.Items.Add(n);
+            }
+            foreach (int n in evenlist)
+            {
+                listBox2.Items.Add(n);
+            }
+        }
+
+        IEnumerable<int> MyIterator(int [] nums,MyDelegate delegateObj)
+        {
+            foreach(int n in nums)
+            {
+                if (delegateObj(n))
+                {
+                    yield return n;
+                }
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            IEnumerable<int> q = MyIterator(nums, n => n >6);
+            foreach (int n in q)
+            {
+                listBox1.Items.Add(n);
+            }            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {   //用定義的方法去做查詢
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //var q = from n in nums
+            //        where n > 5
+            //        select n;
+            IEnumerable<int> q = nums.Where(n => n > 5);  //.where 等於上面寫的 篩選條件
+            foreach (int n in q)
+            {
+                listBox1.Items.Add(n);
+            }
+            //=================================
+            //抓字串
+            string[] words = { "aaa", "bbbbbb", "ccccccccccccc" };
+            //IEnumerable<string>
+                var q1 = words.Where(w => w.Length > 5);
+            foreach(string w in q1)
+            {
+                listBox2.Items.Add(w);
+            }
+            dataGridView1.DataSource = q1.ToList();  //這邊會變抓屬性，秀出來是字串長度
+            //=================================
+            //抓北峰資料庫產品單價>30
+            var q3 = nwDataSet1.Products.Where(p => p.UnitPrice > 30);
+
+            dataGridView2.DataSource = q3.ToList();
+      
+        }
+
+        private void button45_Click(object sender, EventArgs e)
+        {  //初始化時要有值，系統才能自動判定型別
+            var n = 100;
+            var s = "abc";
+            var p = new Point(100, 100);
+        }
+
+        private void button41_Click(object sender, EventArgs e)
+        { //物件初始化
+            MyPoint pt1 =new MyPoint();
+            pt1.P1 = 100;    //set
+            int w = pt1.P1;   //get
+
+            //MessageBox.Show(pt1.p1.ToString());  //get
+            List<MyPoint> list = new List<MyPoint>();
+            list.Add(new MyPoint());
+            list.Add(new MyPoint(100));
+            list.Add(new MyPoint(100,300));
+            list.Add(new MyPoint("aaa"));
+            // 物件初始化-大括號 {   } 
+            list.Add(new MyPoint { P1 = 1, P2 = 5, Field1 = "ccc", Field2 = "ddd" });
+            list.Add(new MyPoint { P1 = 64});
+            list.Add(new MyPoint { P1 = 7, P2 = 55, Field1 = "ccc", Field2 = "ddd" });
+            dataGridView1.DataSource = list;
+            //============================
+            //物件初始化-集合初始
+            List<MyPoint> list2 = new List<MyPoint>
+            {
+                new MyPoint { P1 = 1, P2 = 1, Field1 = "ccc", Field2 = "ddd" },
+                new MyPoint { P1 = 22, P2 = 22, Field1 = "ccc", Field2 = "ddd" },
+                new MyPoint { P1 = 333, P2 = 333, Field1 = "ccc", Field2 = "ddd" }
+            };
+            dataGridView2.DataSource = list2;
+        }
+
+        public class MyPoint
+        {         
+            private int m_p1;
+            public int P1
+            {
+                get
+                {
+                    return m_p1;  //把值取出來
+                }
+                set
+                {
+                    m_p1 = value;  //把值存進去
+                }
+            }
+            public int P2 { get; set; }
+            public string Field1 = "xxx", Field2 = "yyy";
+
+            //建構子方法
+            public MyPoint()
+            {
+
+            }
+            public MyPoint(int p1)
+            {
+                this.P1 = p1;  //+this可以更確定是指為MyPoint的那個物件，P1為屬性
+            }
+            public MyPoint(int p1, int p2)
+            {
+                this.P1 = p1;
+                this.P2 = p2;
+            }
+            public MyPoint(string Field1)
+            {
+
+            }
+
+        }
+
+        private void button43_Click(object sender, EventArgs e)
+        {     //匿名型別，var 會自動幫忙建立適合的型別
+            var x = new { P1 = 99, P2 = 88, P3 = 77 };
+            var y = new { P1 = 99, P2 = 88, P3 = 77 };
+            var z = new {username="aaa",password="bbb "};
+
+            listBox1.Items.Add(x.GetType());  //秀出他取名ㄉ型別
+            listBox1.Items.Add(y.GetType());
+            listBox1.Items.Add(z.GetType());
+            //=========================
+            int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //1.0
+            //var q = from n in nums
+            //        where n > 5
+            //        select new { N = n, Squar = n * n, Cube = n * n * n };
+            //============================
+            //用方法寫
+            var q = nums.Where(n => n > 5).Select(n => new { N = n, Squar = n * n, Cube = n * n * n });
+            //先篩出>5的數字，然後再從裡面建立新的方法
+            dataGridView1.DataSource = q.ToList();
+
+            //===================================
+            //抓北峰的資料，單價>30 ，且秀出$*數量
+            var q1 = from p in nwDataSet1.Products
+                            where p.UnitPrice > 30
+                            select new {
+                                ID = p.ProductID, 
+                                產品名稱 = p.ProductName, 
+                                p.UnitPrice,
+                                p.UnitsInStock, 
+                                TotalPrice = $"{p.UnitPrice * p.UnitsInStock:c2}"
+                            };
+            dataGridView2.DataSource = q1.ToList();
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            string s1 = "abcd";
+            int n = s1.WordCount();
+            MessageBox.Show("WordCount= " + n);
+            //=======================
+            string s2 = "123456789";
+            n = s2.WordCount();
+            //n = MystringExtend.WordCount(s2);    //等於上片的
+            MessageBox.Show("WordCount= " + n);
+            //=======================
+            char ch = s2.Chars(3);
+            MessageBox.Show("Chars= " + ch);
+        }
+
+       
+    }
+    public static class MystringExtend   //擴充方法為靜態類別 
+    {
+        public static int WordCount(this string s)  //靜態類別==靜態方法
+        {
+            return s.Length;
+        }
+        public static char Chars (this string s ,int index)
+        {
+            return s[index];
         }
     }
 }
