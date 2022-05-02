@@ -19,9 +19,7 @@ namespace MyHomeWork
             this.productsTableAdapter1.Fill(this.nwDataSet1.Products);
             this.order_DetailsTableAdapter1.Fill(this.nwDataSet1.Order_Details);
             LoadToComboBox();
-        }
-
-        
+        }        
         private void button14_Click(object sender, EventArgs e)
         {
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(@"c:\windows");
@@ -67,7 +65,6 @@ namespace MyHomeWork
                      select d;
             this.dataGridView2.DataSource = q1.ToList();
         }
-
         private void LoadToComboBox()
         {
             this.comboBox1.Text = "請選擇年份";
@@ -87,24 +84,23 @@ namespace MyHomeWork
             //    comboBox1.Items.Add(years.Key);
             //}
         }              
-
-
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
-            var q1 = from d in this.nwDataSet1.Order_Details
-                     join o in nwDataSet1.Orders
-                     on d.OrderID equals o.OrderID
-                     where d.OrderID == (int)dataGridView1.CurrentRow.Cells[0].Value + 1
+            var q1 = from d in this.nwDataSet1.Order_Details                   
+                     where d.OrderID == (int)dataGridView1.Rows[bindingSource1.Position].Cells[0].Value
                      select d;
-            this.dataGridView2.DataSource = q1.ToList();
+            this.dataGridView2.DataSource = q1.ToList();          
         }
               
-
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.DataSource == null)
+            if (comboBox1.Text == "請選擇年份")
             {
                 MessageBox.Show("請先選擇年份");
+            }
+            else if (dataGridView1.DataSource == null)
+            {
+                MessageBox.Show("請先載入全部訂單");
             }
             else if (comboBox1.Text != "請選擇年份")
             {
@@ -123,64 +119,68 @@ namespace MyHomeWork
                          select d;
                 this.dataGridView2.DataSource = q1.ToList();
             }
-
         }
+
         //上下頁
-        private void button3_Click(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = this.nwDataSet1.Products;
-        }
-
         int page = 1;  //設為初始為第一頁
-        int shownum = 0;
-        int skipnum = 0;
+        int shownum = 0;  //要秀的數字
+        int skipnum = 0;  //要跳過的數字
         bool next = true;
-        bool pre = true;
 
         private void button12_Click(object sender, EventArgs e)
         {
-            if (pre)
+            if (page == 1)
             {
-                page -= 1;
+                MessageBox.Show("已到第一頁");
+            }
+            else if (next)
+            {
+                next = false;
+                page -= 2;
                 shownum = (int.Parse(textBox1.Text) * page);  //抓textbox 值
                 skipnum = (page - 1) * (shownum / page);
                 var q = from p in this.nwDataSet1.Products.Take(shownum).Skip(skipnum)
                         select p;
-
-                dataGridView1.DataSource = q.ToList();
-                label6.Text = page.ToString();
-
+                
+                dataGridView2.DataSource = q.ToList();
             }
-       
+            else if (next == false)
+            {
+                page -= 1;
+                shownum = (int.Parse(textBox1.Text) * page);
+                skipnum = (page - 1) * (shownum / page);
+                var q = from p in this.nwDataSet1.Products.Take(shownum).Skip(skipnum)
+                        select p;
 
+                dataGridView2.DataSource = q.ToList();
+            }
         }
-      
+
         private void button13_Click(object sender, EventArgs e)
         {
-            if (pre)
+            if (next)
             {
                 shownum = int.Parse(textBox1.Text) * page;  //抓textbox 值
                 skipnum = (page - 1) * (shownum / page);
                 var q = from p in this.nwDataSet1.Products.Take(shownum).Skip(skipnum)
-
                         select p;
 
-                dataGridView1.DataSource = q.ToList();
+                dataGridView1.DataSource = nwDataSet1.Products;
+                dataGridView2.DataSource = q.ToList();
                 page += 1;
-                label6.Text = page.ToString();
             }
-            else
+            else if (next == false)
             {
+                next = true;
+                page += 1;
+                shownum = int.Parse(textBox1.Text) * page;
+                skipnum = (page - 1) * (shownum / page);
+                var q = from p in this.nwDataSet1.Products.Take(shownum).Skip(skipnum)
+                        select p;
 
+                dataGridView2.DataSource = q.ToList();
+                page += 1;
             }
-          
         }
     }
 }
-
-
-// int page = int.Parse(textBox1.Text);
-// var q = from p in this.nwDataSet1.Products.Take(page)
-//         select p;
-
-//dataGridView1.DataSource= q.ToList();

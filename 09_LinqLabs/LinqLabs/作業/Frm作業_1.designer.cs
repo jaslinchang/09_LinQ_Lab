@@ -38,7 +38,6 @@ namespace MyHomeWork
             this.lblMaster = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,7 +58,6 @@ namespace MyHomeWork
             this.ordersTableAdapter1 = new LinqLabs.NWDataSetTableAdapters.OrdersTableAdapter();
             this.order_DetailsTableAdapter1 = new LinqLabs.NWDataSetTableAdapters.Order_DetailsTableAdapter();
             this.productsTableAdapter1 = new LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter();
-            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -189,8 +187,6 @@ namespace MyHomeWork
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.label6);
-            this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.label9);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
@@ -213,19 +209,6 @@ namespace MyHomeWork
             this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 136;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(1261, 215);
-            this.button3.Margin = new System.Windows.Forms.Padding(5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(137, 42);
-            this.button3.TabIndex = 136;
-            this.button3.Text = "LOAD Products";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label3
             // 
@@ -283,7 +266,7 @@ namespace MyHomeWork
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(372, 42);
             this.button14.TabIndex = 69;
-            this.button14.Text = "     FileInfo[]  .Log  擋";
+            this.button14.Text = "     FileInfo[]  .Log  檔";
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
@@ -428,15 +411,6 @@ namespace MyHomeWork
             // 
             this.productsTableAdapter1.ClearBeforeFill = true;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(744, 268);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 15);
-            this.label6.TabIndex = 137;
-            this.label6.Text = "label6";
-            // 
             // Frm作業_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -498,7 +472,5 @@ namespace MyHomeWork
         private LinqLabs.NWDataSetTableAdapters.OrdersTableAdapter ordersTableAdapter1;
         private LinqLabs.NWDataSetTableAdapters.Order_DetailsTableAdapter order_DetailsTableAdapter1;
         private LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter productsTableAdapter1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label6;
     }
 }
