@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.button54 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -89,6 +90,7 @@
             // 
             this.groupBox7.AutoSize = true;
             this.groupBox7.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox7.Controls.Add(this.button1);
             this.groupBox7.Controls.Add(this.label8);
             this.groupBox7.Controls.Add(this.button54);
             this.groupBox7.Controls.Add(this.button3);
@@ -101,6 +103,16 @@
             this.groupBox7.TabIndex = 28;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Step 3. 執行 Query 查詢";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(173, 65);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 36);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Aggr.";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label8
             // 
@@ -138,6 +150,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "延遲查詢估算 ";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -558,6 +571,7 @@
         private System.Windows.Forms.SplitContainer splitContainer4;
         private LinqLabs.NWDataSet nwDataSet1;
         private LinqLabs.NWDataSetTableAdapters.ProductsTableAdapter productsTableAdapter1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

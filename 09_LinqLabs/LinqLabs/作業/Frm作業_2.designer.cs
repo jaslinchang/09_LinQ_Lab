@@ -180,7 +180,7 @@ namespace MyHomeWork
             this.label10.Location = new System.Drawing.Point(440, 167);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(24, 16);
+            this.label10.Size = new System.Drawing.Size(24, 15);
             this.label10.TabIndex = 136;
             this.label10.Text = "年:";
             // 
@@ -191,7 +191,7 @@ namespace MyHomeWork
             this.comboBox3.Location = new System.Drawing.Point(519, 164);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(176, 24);
+            this.comboBox3.Size = new System.Drawing.Size(176, 23);
             this.comboBox3.TabIndex = 135;
             // 
             // splitContainer1
@@ -234,16 +234,16 @@ namespace MyHomeWork
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(64, 271);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 16);
+            this.label2.Size = new System.Drawing.Size(0, 15);
             this.label2.TabIndex = 138;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(10, 268);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 19);
+            this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 137;
             this.label1.Text = "筆數 :";
             // 
@@ -254,7 +254,7 @@ namespace MyHomeWork
             this.label8.Location = new System.Drawing.Point(440, 218);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(24, 16);
+            this.label8.Size = new System.Drawing.Size(24, 15);
             this.label8.TabIndex = 132;
             this.label8.Text = "季:";
             // 
@@ -270,7 +270,7 @@ namespace MyHomeWork
             this.comboBox2.Location = new System.Drawing.Point(519, 218);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(176, 24);
+            this.comboBox2.Size = new System.Drawing.Size(176, 23);
             this.comboBox2.TabIndex = 131;
             // 
             // dateTimePicker2
@@ -279,13 +279,13 @@ namespace MyHomeWork
             this.dateTimePicker2.Location = new System.Drawing.Point(851, 112);
             this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(244, 22);
+            this.dateTimePicker2.Size = new System.Drawing.Size(244, 21);
             this.dateTimePicker2.TabIndex = 130;
             this.dateTimePicker2.Value = new System.DateTime(2012, 12, 1, 18, 1, 0, 0);
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button3.Location = new System.Drawing.Point(67, 102);
             this.button3.Margin = new System.Windows.Forms.Padding(5);
             this.button3.Name = "button3";
@@ -301,13 +301,13 @@ namespace MyHomeWork
             this.label7.Location = new System.Drawing.Point(802, 115);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(15, 16);
+            this.label7.Size = new System.Drawing.Size(15, 15);
             this.label7.TabIndex = 129;
             this.label7.Text = "~";
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button5.Location = new System.Drawing.Point(68, 154);
             this.button5.Margin = new System.Windows.Forms.Padding(5);
             this.button5.Name = "button5";
@@ -322,13 +322,13 @@ namespace MyHomeWork
             this.dateTimePicker1.Location = new System.Drawing.Point(519, 112);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(244, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(244, 21);
             this.dateTimePicker1.TabIndex = 128;
             this.dateTimePicker1.Value = new System.DateTime(2012, 4, 1, 18, 1, 0, 0);
             // 
             // button10
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button10.ForeColor = System.Drawing.Color.Black;
             this.button10.Location = new System.Drawing.Point(68, 205);
             this.button10.Margin = new System.Windows.Forms.Padding(5);
@@ -346,13 +346,13 @@ namespace MyHomeWork
             this.label3.Location = new System.Drawing.Point(435, 114);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 16);
+            this.label3.Size = new System.Drawing.Size(37, 15);
             this.label3.TabIndex = 127;
             this.label3.Text = "區間:";
             // 
             // button11
             // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button11.Location = new System.Drawing.Point(67, 51);
             this.button11.Margin = new System.Windows.Forms.Padding(5);
             this.button11.Name = "button11";
@@ -365,16 +365,13 @@ namespace MyHomeWork
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label6.Location = new System.Drawing.Point(64, 15);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(196, 16);
+            this.label6.Size = new System.Drawing.Size(216, 15);
             this.label6.TabIndex = 105;
             this.label6.Text = "LINQ to AdventureWorks DataSet";
-            // 
-            // bindingSource1
-            // 
             // 
             // awDataSet1
             // 
@@ -387,11 +384,11 @@ namespace MyHomeWork
             // 
             // Frm作業_2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1462, 825);
             this.Controls.Add(this.splitContainer1);
-            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm作業_2";
             this.Text = "Frm作業_2";

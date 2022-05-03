@@ -369,7 +369,7 @@ namespace Starter
             //=======================
             string s2 = "123456789";
             n = s2.WordCount();
-            //n = MystringExtend.WordCount(s2);    //等於上片的
+            //n = MystringExtend.WordCount(s2);    //等於上面的
             MessageBox.Show("WordCount= " + n);
             //=======================
             char ch = s2.Chars(3);
