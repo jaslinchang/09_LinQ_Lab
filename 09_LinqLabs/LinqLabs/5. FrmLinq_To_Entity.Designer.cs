@@ -59,6 +59,7 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -111,6 +112,7 @@
             this.button23.TabIndex = 113;
             this.button23.Text = "new MyComparer())";
             this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // button53
             // 
@@ -122,6 +124,7 @@
             this.button53.TabIndex = 113;
             this.button53.Text = "Delete";
             this.button53.UseVisualStyleBackColor = true;
+            this.button53.Click += new System.EventHandler(this.button53_Click);
             // 
             // button54
             // 
@@ -144,6 +147,7 @@
             this.button55.TabIndex = 111;
             this.button55.Text = "Create(Insert)";
             this.button55.UseVisualStyleBackColor = true;
+            this.button55.Click += new System.EventHandler(this.button55_Click);
             // 
             // button56
             // 
@@ -155,6 +159,7 @@
             this.button56.TabIndex = 110;
             this.button56.Text = "Update";
             this.button56.UseVisualStyleBackColor = true;
+            this.button56.Click += new System.EventHandler(this.button56_Click);
             // 
             // button57
             // 
@@ -178,6 +183,7 @@
             this.button14.TabIndex = 119;
             this.button14.Text = "TODO : Orders -  Group by 日期 / 大小";
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // button19
             // 
@@ -236,24 +242,26 @@
             this.button11.BackColor = System.Drawing.Color.Blue;
             this.button11.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(12, 200);
+            this.button11.Location = new System.Drawing.Point(15, 200);
             this.button11.Margin = new System.Windows.Forms.Padding(5);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(489, 42);
             this.button11.TabIndex = 82;
             this.button11.Text = "3. 尋找各分類之平均單價 (點關連標記法, 導覽屬性) (Implicit Inner Join) ";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(297, 128);
+            this.button2.Location = new System.Drawing.Point(425, 40);
             this.button2.Margin = new System.Windows.Forms.Padding(5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(122, 42);
             this.button2.TabIndex = 93;
             this.button2.Text = "導覽屬性";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button21
             // 
@@ -261,21 +269,23 @@
             this.button21.Location = new System.Drawing.Point(12, 81);
             this.button21.Margin = new System.Windows.Forms.Padding(4);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(420, 39);
+            this.button21.Size = new System.Drawing.Size(413, 39);
             this.button21.TabIndex = 92;
             this.button21.Text = "SelectMany - inner join / Cross join";
             this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // button20
             // 
             this.button20.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button20.Location = new System.Drawing.Point(22, 34);
+            this.button20.Location = new System.Drawing.Point(12, 34);
             this.button20.Margin = new System.Windows.Forms.Padding(4);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(413, 39);
             this.button20.TabIndex = 91;
             this.button20.Text = "join (inner join) / join into .. (left outer join).";
             this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // button16
             // 
@@ -283,10 +293,11 @@
             this.button16.Location = new System.Drawing.Point(12, 128);
             this.button16.Margin = new System.Windows.Forms.Padding(5);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(268, 42);
+            this.button16.Size = new System.Drawing.Size(411, 42);
             this.button16.TabIndex = 86;
             this.button16.Text = "點關連標記法 (left out join)";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // button22
             // 
@@ -298,6 +309,7 @@
             this.button22.TabIndex = 112;
             this.button22.Text = "orderby , then by";
             this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // groupBox1
             // 
@@ -339,7 +351,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(765, 188);
+            this.dataGridView1.Size = new System.Drawing.Size(765, 150);
             this.dataGridView1.TabIndex = 0;
             // 
             // dataGridView3
@@ -351,7 +363,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 62;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(765, 94);
+            this.dataGridView3.Size = new System.Drawing.Size(765, 142);
             this.dataGridView3.TabIndex = 0;
             // 
             // dataGridView2
@@ -363,7 +375,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 62;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(765, 93);
+            this.dataGridView2.Size = new System.Drawing.Size(765, 151);
             this.dataGridView2.TabIndex = 0;
             // 
             // splitContainer4
@@ -381,14 +393,13 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.dataGridView3);
-            this.splitContainer4.Size = new System.Drawing.Size(765, 194);
-            this.splitContainer4.SplitterDistance = 93;
+            this.splitContainer4.Size = new System.Drawing.Size(765, 300);
+            this.splitContainer4.SplitterDistance = 151;
             this.splitContainer4.SplitterWidth = 7;
             this.splitContainer4.TabIndex = 1;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.button21);
             this.groupBox3.Controls.Add(this.button20);
             this.groupBox3.Controls.Add(this.button16);
@@ -417,8 +428,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer5);
-            this.splitContainer3.Size = new System.Drawing.Size(765, 661);
-            this.splitContainer3.SplitterDistance = 194;
+            this.splitContainer3.Size = new System.Drawing.Size(765, 699);
+            this.splitContainer3.SplitterDistance = 300;
             this.splitContainer3.SplitterWidth = 7;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -436,7 +447,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.treeView1);
-            this.splitContainer5.Size = new System.Drawing.Size(765, 460);
+            this.splitContainer5.Size = new System.Drawing.Size(765, 392);
             this.splitContainer5.SplitterDistance = 247;
             this.splitContainer5.SplitterWidth = 5;
             this.splitContainer5.TabIndex = 3;
@@ -449,7 +460,7 @@
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Margin = new System.Windows.Forms.Padding(5);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(247, 460);
+            this.listBox1.Size = new System.Drawing.Size(247, 392);
             this.listBox1.TabIndex = 0;
             // 
             // treeView1
@@ -458,7 +469,7 @@
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(5);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(513, 460);
+            this.treeView1.Size = new System.Drawing.Size(513, 392);
             this.treeView1.TabIndex = 2;
             // 
             // splitContainer2
@@ -477,7 +488,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(765, 856);
-            this.splitContainer2.SplitterDistance = 188;
+            this.splitContainer2.SplitterDistance = 150;
             this.splitContainer2.SplitterWidth = 7;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -491,6 +502,8 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
+            this.splitContainer1.Panel1.Controls.Add(this.button3);
+            this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
@@ -504,6 +517,16 @@
             this.splitContainer1.SplitterDistance = 612;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 5;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(425, 90);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(122, 47);
+            this.button3.TabIndex = 119;
+            this.button3.Text = "預存程序";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox5
             // 
@@ -598,5 +621,6 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button button3;
     }
 }

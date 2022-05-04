@@ -12,6 +12,8 @@ namespace LinqLabs
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class NorthwindEntities : DbContext
     {
@@ -27,5 +29,21 @@ namespace LinqLabs
     
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Order_Detail> Order_Details { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+    
+        public virtual ObjectResult<Sales_by_Year_Result> Sales_by_Year(Nullable<System.DateTime> beginning_Date, Nullable<System.DateTime> ending_Date)
+        {
+            var beginning_DateParameter = beginning_Date.HasValue ?
+                new ObjectParameter("Beginning_Date", beginning_Date) :
+                new ObjectParameter("Beginning_Date", typeof(System.DateTime));
+    
+            var ending_DateParameter = ending_Date.HasValue ?
+                new ObjectParameter("Ending_Date", ending_Date) :
+                new ObjectParameter("Ending_Date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sales_by_Year_Result>("Sales_by_Year", beginning_DateParameter, ending_DateParameter);
+        }
     }
 }

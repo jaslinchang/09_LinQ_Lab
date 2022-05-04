@@ -87,7 +87,8 @@ namespace Starter
                         MyGroup = g
                     };
             dataGridView1.DataSource = q.ToList();  //僅列出型別
-                                                    //用treeview 做呈現所有值
+            
+            //用treeview 做呈現所有值
             foreach (var group in q)  //先抓分類的群組: 1,0
             {
                 string s = $"{group.Mykey}({group.MyCount})";
