@@ -42,26 +42,15 @@ namespace LinqLabs
         }
 
         Student student = new Student();
-        int count = 1;
-
-        void Clear()
-        {
-            this.dataGridView1.DataSource = null;
-            this.dataGridView2.DataSource = null;
-            this.dataGridView3.DataSource = null;
-            this.chart1.Series.Clear();
-            this.chart2.Series.Clear();
-        }
+        int countt = 1;
+               
         private void button36_Click(object sender, EventArgs e)
         {
-            //搜尋 班級學生成績
-            //var q = from s in students_scores
-            //        select s;
-            //dataGridView1.DataSource = q.ToList();
-
-            if (count == 1)
+            //搜尋 班級學生成績          
+            if (countt == 1)
             {
-                // 共幾個 學員成績 ?						
+                int count = students_scores.Count();
+                // 共幾個 學員成績 ?	
 
                 // 找出 前面三個 的學員所有科目成績			
                 var q2 = (from s in students_scores
@@ -69,17 +58,16 @@ namespace LinqLabs
                 dataGridView1.DataSource = q2.ToList();
                 // 找出 後面兩個 的學員所有科目成績					
                 var q3 = (from s in students_scores
-                          orderby s.Name descending
-                          select new { s.Name, s.Chi, s.Eng, s.Math }).Take(2);
+                          select new { s.Name, s.Chi, s.Eng, s.Math }).Skip(count-2).Take(2);
                 dataGridView2.DataSource = q3.ToList();
                 //找出 Name 'aaa','bbb','ccc' 的學員國文英文科目成績
                 var q4 = from s in students_scores
                          where s.Name == "aaa" || s.Name == "bbb" || s.Name == "ccc"
                          select new { s.Name,s.Chi, s.Eng };
                 dataGridView3.DataSource = q4.ToList();
-                count++;
+                countt++;
             }
-            else if (count == 2)
+            else if (countt == 2)
             {
                 this.dataGridView1.DataSource = null;
                 this.dataGridView2.DataSource = null;
@@ -99,14 +87,20 @@ namespace LinqLabs
                          where s.Name == "aaa" || s.Name == "bbb" || s.Name == "ccc"
                          select new { s.Name, s.Chi, s.Math };
                 dataGridView3.DataSource = q7.ToList();
-                //TODO 數學不及格 ... 是誰  
+                //數學不及格 ... 是誰  
                 var q8 = from s in students_scores
                          where s.Math < 60
-                         select new { s.Name,  s.Math };
-                dataGridView3.DataSource = q8.ToList();
-                                
+                         select s.Name;
 
-                count = 1;
+                List<string> Name = new List<string>();
+                foreach (string n in q8)
+                {
+                    Name.Add(n);
+                }                
+                MessageBox.Show($"數學不及格 : {String.Join(", ",Name)}");
+
+
+                countt = 1;
             }
 
 
@@ -209,7 +203,7 @@ namespace LinqLabs
                          Year = g.Key,
                          TotalPrice = $"{g.Sum(n => n.UnitPrice * n.Quantity * (decimal)(1 - n.Discount)):c2}"
                      };
-            this.dataGridView2.DataSource = q2.ToList();
+            //this.dataGridView2.DataSource = q2.ToList();
             this.label2.Text = $"年總銷售最優 : {q2.First()} \n年總銷售最差 : {q2.Last()}";
 
             // 那一個月總銷售最好 ? 那一個月總銷售最不好 ?
@@ -232,10 +226,12 @@ namespace LinqLabs
                          Mykey=g.Key,
                          TotalPrice = $"{g.Sum(n => n.UnitPrice * n.Quantity * (decimal)(1 - n.Discount)):c2}"
                      };
+            this.dataGridView2.DataSource = q4.ToList();
             this.chart1.DataSource = q4.ToList();
-            chart1.Series[0].XValueMember = "Mykey";
-            chart1.Series[0].YValueMembers = "TotalPrice";
-            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            this.chart1.Series[0].XValueMember = "Mykey";
+            this.chart1.Series[0].YValueMembers = "TotalPrice";
+            this.chart1.Series[0].IsValueShownAsLabel = true;
+            this.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
 
             // 每月 總銷售分析圖
             var q5 = from d in this.dbContext.Order_Details.AsEnumerable()
@@ -246,9 +242,9 @@ namespace LinqLabs
                          TotalPrice = $"{g.Sum(n => n.UnitPrice * n.Quantity * (decimal)(1 - n.Discount)):c2}"
                      };
             this.chart2.DataSource = q5.ToList();
-            chart2.Series[0].XValueMember = "Mykey";
-            chart2.Series[0].YValueMembers = "TotalPrice";
-            chart2.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            this.chart2.Series[0].XValueMember = "Mykey";
+            this.chart2.Series[0].YValueMembers = "TotalPrice";
+            this.chart2.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -274,7 +270,7 @@ namespace LinqLabs
                          Mykey = g.Key,                         
                          TotalPrice = g.Sum(n => n.UnitPrice * n.Quantity * (decimal)(1 - n.Discount))
                      };
-            List<int>
+            //List<int>
             
             dataGridView1.DataSource = q2.ToList();
 
