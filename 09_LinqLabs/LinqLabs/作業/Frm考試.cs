@@ -24,7 +24,6 @@ namespace LinqLabs
             new Student{ Name = "ddd", Class = "CS_102", Chi = 80, Eng = 70, Math = 85, Gender = "Female" },
             new Student{ Name = "eee", Class = "CS_101", Chi = 80, Eng = 80, Math = 50, Gender = "Female" },
             new Student{ Name = "fff", Class = "CS_102", Chi = 80, Eng = 80, Math = 80, Gender = "Female" },
-
             };
         }
 
@@ -40,53 +39,67 @@ namespace LinqLabs
             public int Math { get;  set; }
             public string Gender { get; set; }
         }
-
+        
         Student student = new Student();
-        int countt = 1;
-               
-        private void button36_Click(object sender, EventArgs e)
-        {
-            //搜尋 班級學生成績          
-            if (countt == 1)
-            {
-                int count = students_scores.Count();
-                // 共幾個 學員成績 ?	
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0)
+            {
+                // 共幾個 學員成績 ?	               
+                var q1 = (from s in students_scores
+                         select s).Count();
+               
+                MessageBox.Show($"共{q1}個學員");
+            }
+            else if (comboBox1.SelectedIndex == 1)
+            {
                 // 找出 前面三個 的學員所有科目成績			
                 var q2 = (from s in students_scores
-                          select new { s.Name,s.Chi,s.Eng,s.Math}).Take(3);
+                          select new { s.Name, s.Chi, s.Eng, s.Math }).Take(3);
                 dataGridView1.DataSource = q2.ToList();
-                // 找出 後面兩個 的學員所有科目成績					
+            }
+            else if (comboBox1.SelectedIndex ==2 )
+            {
+                // 找出 後面兩個 的學員所有科目成績		
+                int count = students_scores.Count();
                 var q3 = (from s in students_scores
-                          select new { s.Name, s.Chi, s.Eng, s.Math }).Skip(count-2).Take(2);
+                          select new { s.Name, s.Chi, s.Eng, s.Math }).Skip(count - 2).Take(2);
                 dataGridView2.DataSource = q3.ToList();
-                //找出 Name 'aaa','bbb','ccc' 的學員國文英文科目成績
+            }
+            else if (comboBox1.SelectedIndex ==3 )
+            {
                 var q4 = from s in students_scores
                          where s.Name == "aaa" || s.Name == "bbb" || s.Name == "ccc"
-                         select new { s.Name,s.Chi, s.Eng };
+                         select new { s.Name, s.Chi, s.Eng };
                 dataGridView3.DataSource = q4.ToList();
-                countt++;
             }
-            else if (countt == 2)
+            else if (comboBox1.SelectedIndex ==4 )
             {
-                this.dataGridView1.DataSource = null;
-                this.dataGridView2.DataSource = null;
-                this.dataGridView3.DataSource = null;
                 // 找出學員 'bbb' 的成績	                          
                 var q5 = from s in students_scores
                          where s.Name == "bbb"
                          select new { s.Name, s.Chi, s.Eng, s.Math };
                 dataGridView1.DataSource = q5.ToList();
+            }
+            else if (comboBox1.SelectedIndex ==5 )
+            {
                 // 找出除了 'bbb' 學員的學員的所有成績 ('bbb' 退學)	
                 var q6 = from s in students_scores
                          where s.Name != "bbb"
                          select new { s.Name, s.Chi, s.Eng, s.Math };
                 dataGridView2.DataSource = q6.ToList();
+            }
+            else if (comboBox1.SelectedIndex == 6)
+            {
                 // 找出 'aaa', 'bbb' 'ccc' 學員 國文數學兩科 科目成績  |		
                 var q7 = from s in students_scores
                          where s.Name == "aaa" || s.Name == "bbb" || s.Name == "ccc"
                          select new { s.Name, s.Chi, s.Math };
                 dataGridView3.DataSource = q7.ToList();
+            }
+            else if (comboBox1.SelectedIndex ==7 )
+            {
                 //數學不及格 ... 是誰  
                 var q8 = from s in students_scores
                          where s.Math < 60
@@ -96,14 +109,9 @@ namespace LinqLabs
                 foreach (string n in q8)
                 {
                     Name.Add(n);
-                }                
-                MessageBox.Show($"數學不及格 : {String.Join(", ",Name)}");
-
-
-                countt = 1;
+                }
+                MessageBox.Show($"數學不及格 : {String.Join(", ", Name)}");
             }
-
-
 
         }
   
@@ -113,45 +121,30 @@ namespace LinqLabs
             var q = from s in students_scores
                     select s;
             dataGridView1.DataSource = q.ToList();
-            //MessageBox.Show(students_scores.Max().ToString());
-            //var q = from s in students_scores
-            //        select new
-            //        {
-            //            Name = s.Name,
-            //            Sum = s.Chi + s.Eng + s.Math,
-            //            Avg = (s.Chi + s.Eng + s.Math) / 3,
-            //            //Max = students_scores.Sum()
-            //        };
 
-            //var max = students_scores.Select(n => n.Name).Max();
-
-            //MessageBox.Show(max);
-            //========================================
             var q1 = from s in students_scores
-                     group s by s.Name into g
                      select new
                      {
-                         Name = g.Key,
-                         //Max=
-
-                         //Max = from s2 in g
-                         //      group s2 by s2.Name into g2
-                         //      //where (s2.Chi + s2.Eng + s2.Math) == g.Max(n => (s2.Chi + s2.Eng + s2.Math))
-                         //      select g2.Key                               
+                         Name = s.Name,
+                         Sum = s.Chi + s.Eng + s.Math,
+                         Avg = (s.Chi + s.Eng + s.Math) / 3,
+                         Max =( s.Chi > s.Eng?s.Chi:s.Eng )>(s.Eng>s.Math?s.Eng:s.Math)? (s.Chi > s.Eng ? s.Chi : s.Eng): (s.Eng > s.Math ? s.Eng : s.Math),
+                         Min= (s.Chi < s.Eng ? s.Chi : s.Eng) < (s.Eng < s.Math ? s.Eng : s.Math) ? (s.Chi <s.Eng ? s.Chi : s.Eng) : (s.Eng < s.Math ? s.Eng : s.Math)
                      };
-
             dataGridView2.DataSource = q1.ToList();
-
-
+            //==========================================
             //各科 sum, min, max, avg
-            var q2 = from s in students_scores
-                     group s by s.Name into g
-                     select new
-                     {
-                         g.Key,
-                         //Max = g.Max(g.Key)
-                     };
-            dataGridView3.DataSource = q2.ToList();
+            //var q2 = from s in students_scores
+            //         group s by new { s.Chi, s.Eng, s.Math } into g
+            //         select new
+            //         {
+            //             g.Key.Chi
+            //            //Sum=g.Sum(s=>s.Chi+s.Eng+s.Math),
+            //            //Avg = g.Average(s =>( s.Chi + s.Eng + s.Math)/3),
+                        
+            //         };
+            //dataGridView3.DataSource = q2.ToList();
+
         }
         private void button33_Click(object sender, EventArgs e)
         {
@@ -270,7 +263,7 @@ namespace LinqLabs
                          Mykey = g.Key,                         
                          TotalPrice = g.Sum(n => n.UnitPrice * n.Quantity * (decimal)(1 - n.Discount))
                      };
-            //List<int>
+            
             
             dataGridView1.DataSource = q2.ToList();
 
@@ -279,6 +272,7 @@ namespace LinqLabs
             //chart1.Series[1].YValueMembers = "TotalPrice";
             //chart1.Series[1].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
         }
-        
+
+      
     }
 }
