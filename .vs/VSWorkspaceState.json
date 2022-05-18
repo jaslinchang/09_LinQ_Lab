@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\09_LinqLabs",
+    "\\09_LinqLabs\\LinqLabs",
+    "\\09_LinqLabs\\LinqLabs\\作業"
   ],
-  "SelectedNode": "\\LinqLabs.sln",
+  "SelectedNode": "\\09_LinqLabs\\LinqLabs\\作業\\Frm考試.cs",
   "PreviewInSolutionExplorer": false
 }
